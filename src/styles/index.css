@@ -1,0 +1,101 @@
+/* ========== CSS Variables ========== */
+:root {
+  --primary-color: #ffc107;
+  --secondary-color: #343a40;
+  --text-dark: #212529;
+  --text-light: #f8f9fa;
+  --transition-speed: 0.3s;
+  --navbar-height: 70px;
+}
+
+/* ========== Base Reset & Styles ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: linear-gradient(rgba(244, 238, 238, 0.9), rgba(244, 238, 238, 0.9));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Layout ========== */
+.section-padding {
+  padding: 4rem 1.5rem;
+  position: relative;
+}
+
+.lead.text-muted {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 992px) {
+  .section-padding {
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding: 2rem 1rem;
+  }
+
+  h2.display-5 {
+    font-size: 1.8rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .d-flex.flex-wrap.gap-3 {
+    flex-direction: column;
+  }
+}
+
+@media (hover: none) {
+  .card:hover,
+  .our-story .card:hover,
+  .service-card:hover {
+    transform: none;
+  }
+
+  .nav-link:hover {
+    background-color: transparent;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

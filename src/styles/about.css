@@ -1,0 +1,113 @@
+.about-section {
+  padding: 3rem 0;
+}
+
+/* Our Story */
+.our-story {
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.our-story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 50px;
+  background: var(--primary-color);
+  opacity: 0.3;
+}
+
+.our-story .card {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+}
+
+.our-story .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.our-story .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.our-story .card:hover::before {
+  transform: scaleX(1);
+}
+
+.our-story p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.our-story p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--primary-color);
+  opacity: 0;
+  transform: scaleY(0);
+  transition: all 0.3s ease;
+}
+
+.our-story .card:hover p::before {
+  opacity: 0.2;
+  transform: scaleY(1);
+}
+
+.our-story .lead {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.our-story h3 {
+  position: relative;
+  display: inline-block;
+}
+
+.our-story h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.our-story .card:hover h3::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (max-width: 768px) {
+  .our-story::before {
+    display: none;
+  }
+
+  .our-story p {
+    padding-left: 0.5rem;
+  }
+}

@@ -1,0 +1,89 @@
+.services-section {
+  padding: 3rem 0;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 193, 7, 0.1) 0%,
+    rgba(255, 193, 7, 0) 100%
+  );
+  transition: top 0.5s ease;
+}
+
+.service-card:hover::before {
+  top: 0;
+}
+
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+}
+
+.card:hover .icon-wrapper {
+  background-color: var(--primary-color) !important;
+}
+
+.card:hover .icon-wrapper i {
+  color: white !important;
+}
+
+.service-card:hover .icon-wrapper {
+  background-color: var(--primary-color) !important;
+}
+
+.service-card:hover .icon-wrapper i {
+  color: white !important;
+}
+
+/* Process Steps */
+.process-step {
+  transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-10px);
+}
+
+.step-number {
+  transition: all 0.3s ease;
+}
+
+.process-step:hover .step-number {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  transform: scale(1.1);
+}
+
+@media (max-width: 767.98px) {
+  .services-section {
+    padding: 2rem 0;
+  }
+
+  .process-step {
+    margin-bottom: 1.5rem;
+  }
+
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -26,12 +26,12 @@
     "shortcuts": [
         {
             "name": "Our Services",
-            "url": "/services.html",
+            "url": "/services",
             "description": "View our construction and design services"
         },
         {
             "name": "Contact Us",
-            "url": "/contactus.html",
+            "url": "/contact",
             "description": "Get in touch with us"
         }
     ]
