@@ -31,7 +31,7 @@ export default function Navbar() {
               src="/tech/logo.png" 
               alt="First Minds Logo" 
               className="navbar-logo me-2" 
-              style={{ width: '28px', height: '28px', objectFit: 'contain' }}
+              style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
             />
             <span>First</span>Minds
           </BsNavbar.Brand>

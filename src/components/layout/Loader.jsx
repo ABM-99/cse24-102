@@ -36,12 +36,12 @@ export default function Loader() {
 
   if (!visible) return null
 
-  // Dot styles with brand colors
+  // Dot styles with brand colors (visible on black background)
   const dots = [
-    { color: '#0f172a', delay: '0ms' },  // Charcoal
-    { color: '#D97706', delay: '120ms' }, // Amber
-    { color: '#64748b', delay: '240ms' }, // Slate
-    { color: '#F59E0B', delay: '360ms' }  // Warm Orange
+    { color: '#D97706', delay: '0ms' },   // Amber
+    { color: '#ffffff', delay: '120ms' },  // White
+    { color: '#64748b', delay: '240ms' },  // Slate
+    { color: '#fb923c', delay: '360ms' }   // Orange
   ]
 
   return (
@@ -51,7 +51,7 @@ export default function Loader() {
       style={{
         position: 'fixed',
         inset: 0,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#030303',
         zIndex: 99999,
         display: 'flex',
         flexDirection: 'column',
@@ -60,14 +60,27 @@ export default function Loader() {
         transition: 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
       }}
     >
+      {/* Official Brain Logo */}
+      <img 
+        src="/tech/logo.png" 
+        alt="First Minds Logo" 
+        style={{
+          width: '56px',
+          height: '56px',
+          objectFit: 'contain',
+          marginBottom: '20px',
+          filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))'
+        }}
+      />
+
       {/* 4 Branded Dots Container */}
       <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
         {dots.map((dot, index) => (
           <div
             key={index}
             style={{
-              width: '14px',
-              height: '14px',
+              width: '12px',
+              height: '12px',
               borderRadius: '50%',
               backgroundColor: dot.color,
               animation: 'dotReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate',
@@ -83,7 +96,7 @@ export default function Loader() {
           fontFamily: "var(--font-heading, 'Plus Jakarta Sans', sans-serif)",
           fontSize: '24px',
           fontWeight: 800,
-          color: '#0f172a',
+          color: '#ffffff',
           letterSpacing: '-0.04em',
           marginBottom: '16px',
           display: 'flex',
@@ -104,7 +117,8 @@ export default function Loader() {
           style={{ 
             opacity: brandRevealSecond ? 1 : 0, 
             transform: brandRevealSecond ? 'translateY(0)' : 'translateY(8px)',
-            transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+            transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            color: '#ffffff'
           }}
         >
           Minds
@@ -116,7 +130,7 @@ export default function Loader() {
         style={{ 
           width: '120px', 
           height: '2px', 
-          backgroundColor: '#e2e8f0', 
+          backgroundColor: 'rgba(255,255,255,0.1)', 
           borderRadius: '999px',
           overflow: 'hidden',
           position: 'relative'

@@ -40,7 +40,7 @@ export default function PortalGateway() {
       </div>
 
       <div className="gateway-content">
-        <div className="gateway-header" data-aos="fade-down">
+        <div className="gateway-header">
           <img src="/tech/logo.png" alt="First Minds Logo" className="gateway-logo" />
           <h1 className="gateway-title">FIRST MINDS</h1>
           <p className="gateway-subtitle">
@@ -53,7 +53,6 @@ export default function PortalGateway() {
           <div 
             className="gateway-card construction" 
             onClick={() => selectPortal('construction')}
-            data-aos="fade-right"
           >
             <div className="gateway-card-glow"></div>
             <div className="gateway-card-icon">
@@ -73,7 +72,6 @@ export default function PortalGateway() {
           <div 
             className="gateway-card technology" 
             onClick={() => selectPortal('technology')}
-            data-aos="fade-left"
           >
             <div className="gateway-card-glow"></div>
             <div className="gateway-card-icon">

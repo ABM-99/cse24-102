@@ -37,7 +37,7 @@ export default function TechFooter() {
         <div className="tech-footer-inner">
           <div className="tech-footer-brand">
             <Link to="/technology" className="tech-footer-logo">
-              <img src="/tech/logo.png" alt="First Minds Logo" style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
+              <img src="/tech/logo.png" alt="First Minds Logo" style={{ height: '46px', width: 'auto', objectFit: 'contain' }} />
               <span>First Minds</span>
             </Link>
             <p className="tech-footer-tagline">
