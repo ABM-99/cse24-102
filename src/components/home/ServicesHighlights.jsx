@@ -7,25 +7,25 @@ const highlights = [
     Icon: Home, 
     title: 'Residential Construction', 
     desc: 'Custom homes designed for your lifestyle and built to last generations.', 
-    link: '/services#residential' 
+    link: '/construction/services#residential' 
   },
   { 
     Icon: Building, 
     title: 'Commercial Projects', 
     desc: 'Functional and aesthetic commercial spaces that support business success.', 
-    link: '/services#commercial' 
+    link: '/construction/services#commercial' 
   },
   { 
     Icon: Palette, 
     title: '3D Design & Planning', 
     desc: 'Visualize your project before construction begins with our advanced modeling.', 
-    link: '/services#design' 
+    link: '/construction/services#design' 
   },
   { 
     Icon: Wrench, 
     title: 'Renovations', 
     desc: 'Transform existing spaces with our quality renovation and remodeling services.', 
-    link: '/services#renovations' 
+    link: '/construction/services#renovations' 
   },
 ]
 

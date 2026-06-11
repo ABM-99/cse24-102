@@ -15,8 +15,8 @@ export default function WelcomeSection() {
               At First Minds (PTY) LTD, we combine traditional craftsmanship with modern innovation to create structures that stand the test of time.
             </p>
             <div className="d-flex flex-wrap gap-3">
-              <Link to="/about" className="btn-premium btn-premium-secondary">Our Story</Link>
-              <Link to="/services" className="btn-premium btn-premium-ghost">Our Services</Link>
+              <Link to="/construction/about" className="btn-premium btn-premium-secondary">Our Story</Link>
+              <Link to="/construction/services" className="btn-premium btn-premium-ghost">Our Services</Link>
             </div>
           </div>
           <div className="col-lg-6">

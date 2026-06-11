@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, Mail, MapPin, Cpu } from 'lucide-react'
 
 // Custom high-quality SVG for WhatsApp to replace bootstrap-icons dependency
 const WhatsAppIcon = ({ size = 20, className = "" }) => (
@@ -36,6 +36,10 @@ const FacebookIcon = ({ size = 20, className = "" }) => (
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
+  const handleTechSwitch = () => {
+    sessionStorage.setItem('portal_choice', 'technology')
+  }
+
   return (
     <footer>
       {/* Top accent bar */}
@@ -46,12 +50,12 @@ export default function Footer() {
           
           {/* Column 1: Brand & Logo */}
           <div className="col-lg-4 col-md-6 text-center text-md-start">
-            <Link to="/">
+            <Link to="/construction">
               <img 
-                src="/logo/2.png" 
+                src="/tech/logo.png" 
                 alt="First Minds Logo" 
                 className="footer-logo mb-3" 
-                width="150" 
+                width="70" 
                 height="auto" 
               />
             </Link>
@@ -65,11 +69,16 @@ export default function Footer() {
           <div className="col-lg-3 col-md-6 text-center text-md-start">
             <h3>Explore</h3>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/services">Our Services</Link></li>
-              <li><Link to="/portfolio">Projects Portfolio</Link></li>
-              <li><Link to="/contact">Get In Touch</Link></li>
+              <li><Link to="/construction">Home</Link></li>
+              <li><Link to="/construction/about">About Us</Link></li>
+              <li><Link to="/construction/services">Our Services</Link></li>
+              <li><Link to="/construction/portfolio">Projects Portfolio</Link></li>
+              <li><Link to="/construction/contact">Get In Touch</Link></li>
+              <li className="mt-2 pt-2 border-top border-secondary">
+                <Link to="/technology" onClick={handleTechSwitch} className="text-warning d-flex align-items-center gap-1">
+                  <Cpu size={14} /> First Minds Technologies
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -121,8 +130,8 @@ export default function Footer() {
             &copy; {currentYear} First Minds (PTY) LTD. All rights reserved.
           </div>
           <div className="footer-bottom-links">
-            <Link to="/about">Privacy Policy</Link>
-            <Link to="/contact">Terms of Service</Link>
+            <Link to="/construction/about">Privacy Policy</Link>
+            <Link to="/construction/contact">Terms of Service</Link>
           </div>
         </div>
       </div>

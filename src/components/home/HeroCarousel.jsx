@@ -7,7 +7,7 @@ const slides = [
     alt: 'Modern House Construction',
     title: 'Build Your Dream Home',
     subtitle: 'Custom-designed residences with sustainable materials and innovative technology',
-    link: '/services',
+    link: '/construction/services',
     buttonText: 'Explore Our Services',
     loading: 'eager'
   },
@@ -16,7 +16,7 @@ const slides = [
     alt: 'Architectural Design Planning',
     title: 'Innovative Design Solutions',
     subtitle: 'From concept to completion, we bring your vision to life',
-    link: '/portfolio',
+    link: '/construction/portfolio',
     buttonText: 'View Our Portfolio',
     loading: 'lazy'
   },
@@ -25,7 +25,7 @@ const slides = [
     alt: 'Professional Construction Team',
     title: 'Trusted Construction Experts',
     subtitle: 'Building excellence across Botswana with precision and quality design',
-    link: '/contact',
+    link: '/construction/contact',
     buttonText: 'Get a Free Consultation',
     loading: 'lazy'
   }

@@ -68,7 +68,7 @@ export default function FeaturedProjects() {
                     {project.desc}
                   </p>
                   <div>
-                    <Link to="/portfolio" className="btn-premium btn-premium-ghost w-100">
+                    <Link to="/construction/portfolio" className="btn-premium btn-premium-ghost w-100">
                       <span>View Details</span>
                       <ArrowRight size={14} />
                     </Link>
@@ -80,7 +80,7 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="text-center mt-5">
-          <Link to="/portfolio" className="btn-premium btn-premium-secondary">
+          <Link to="/construction/portfolio" className="btn-premium btn-premium-secondary">
             <span>View Full Portfolio</span>
             <ArrowRight size={16} />
           </Link>

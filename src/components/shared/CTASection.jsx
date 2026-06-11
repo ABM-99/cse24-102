@@ -38,7 +38,7 @@ export default function CTASection({
           {subtitle}
         </p>
         <div className="d-flex flex-wrap justify-content-center gap-3">
-          <Link to="/contact" className="btn-premium btn-premium-secondary">
+          <Link to="/construction/contact" className="btn-premium btn-premium-secondary">
             <MessageSquare size={16} />
             <span>Get in Touch</span>
           </Link>

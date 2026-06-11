@@ -43,7 +43,7 @@ export default function ServiceModal({ service, onClose }) {
         <button className="btn-premium btn-premium-ghost" onClick={onClose}>
           Close
         </button>
-        <Link to="/contact" className="btn-premium btn-premium-secondary" onClick={onClose}>
+        <Link to="/construction/contact" className="btn-premium btn-premium-secondary" onClick={onClose}>
           Request Service
         </Link>
       </Modal.Footer>
