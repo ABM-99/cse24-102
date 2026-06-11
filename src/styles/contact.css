@@ -1,33 +1,117 @@
+/* ========== Contact Page Styles (Glassmorphism & Swiss Modernism 2.0) ========== */
+
 .contact-section {
-  padding: 3rem 0;
+  padding: var(--space-4) 0;
 }
 
-.contact-info .d-flex:hover .icon-wrapper {
-  background-color: var(--primary-color) !important;
+/* 1. Contact Form Validations & Focus states */
+.was-validated .form-input-premium:invalid {
+  border-color: #dc2626 !important;
+  background-image: none;
 }
 
-.contact-info .d-flex:hover i {
-  color: white !important;
+.was-validated .form-input-premium:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
 }
 
-#contactForm .form-control,
-#contactForm .form-select {
-  padding: 0.75rem 1rem;
-  border: 1px solid #dee2e6;
+.was-validated .form-input-premium:valid {
+  border-color: #10b981 !important;
+  background-image: none;
 }
 
-#contactForm .form-control:focus,
-#contactForm .form-select:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+/* Checkbox alignment */
+.form-check-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--slate-gray);
+  cursor: pointer;
 }
 
-@media (max-width: 767.98px) {
-  .contact-section {
-    padding: 2rem 0;
-  }
+.form-check-input:checked {
+  background-color: var(--primary-amber) !important;
+  border-color: var(--primary-amber) !important;
+}
 
-  .card-body {
-    padding: 1.5rem !important;
-  }
+.form-check-input:focus {
+  box-shadow: 0 0 0 3px var(--primary-amber-light) !important;
+}
+
+/* 2. Contact details list hover */
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+  padding: 12px;
+  border-radius: var(--radius-card);
+  transition: var(--transition-standard);
+}
+
+.contact-detail-item:hover {
+  background-color: rgba(15, 23, 42, 0.03);
+}
+
+.contact-detail-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--primary-amber-light);
+  color: var(--primary-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-2);
+  transition: var(--transition-standard);
+  flex-shrink: 0;
+}
+
+.contact-detail-item:hover .contact-detail-icon-box {
+  background-color: var(--primary-amber);
+  color: #ffffff;
+  transform: scale(1.05) rotate(3deg);
+}
+
+.contact-detail-item h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--deep-charcoal);
+}
+
+.contact-detail-item p,
+.contact-detail-item a {
+  font-size: 0.875rem;
+  color: var(--slate-gray);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.contact-detail-item a:hover {
+  color: var(--primary-amber);
+}
+
+/* 3. Social bubbles row */
+.contact-social-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-social-bubble {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  color: var(--slate-gray) !important;
+  transition: var(--transition-standard);
+}
+
+.contact-social-bubble:hover {
+  background-color: var(--primary-amber);
+  color: var(--deep-charcoal) !important;
+  border-color: var(--primary-amber);
+  transform: translateY(-2px);
 }

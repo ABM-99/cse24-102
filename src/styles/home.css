@@ -1,13 +1,15 @@
-/* ========== Carousel ========== */
-.carousel {
-  margin-top: var(--navbar-height);
+/* ========== Home Page Styles (Glassmorphism & Swiss Modernism 2.0) ========== */
+
+/* 1. Hero Carousel Redesign */
+.hero-carousel {
+  margin-top: 0;
   position: relative;
   overflow: hidden;
 }
 
 .carousel-item {
-  height: calc(100vh - var(--navbar-height));
-  min-height: 300px;
+  height: 90vh; /* Premium tall hero height */
+  min-height: 550px;
   position: relative;
 }
 
@@ -16,134 +18,141 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  filter: brightness(0.65) contrast(1.05); /* Enhance readability of overlay text */
+  transition: transform 6s ease-in-out;
 }
 
-.carousel-inner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-  z-index: 1;
+.carousel-item.active img {
+  transform: scale(1.08); /* Slow ken burns zoom effect */
 }
 
+/* Glassmorphic Caption Card Overlay */
 .carousel-caption {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
-  z-index: 2;
+  top: 55%;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  right: auto;
+  bottom: auto;
+  z-index: 10;
+  width: calc(100% - 48px);
+  max-width: 780px;
+  padding: var(--space-4) !important;
+  background: rgba(15, 23, 42, 0.45) !important; /* Slate dark glass card */
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   text-align: center;
-  padding: 0 1rem;
+  animation: scaleUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .carousel-caption h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: var(--space-2);
+  line-height: 1.15;
 }
 
 .carousel-caption p {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  max-width: min(80%, 800px);
-  margin: 0 auto 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 620px;
+  margin: 0 auto var(--space-3);
+  line-height: 1.5;
 }
 
-.carousel-caption .btn {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  padding: 0.75rem 1.5rem;
-  border-width: 2px;
+/* Carousel Control Customization */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 var(--space-3);
+  backdrop-filter: blur(4px);
+  opacity: 0.7;
+  transition: var(--transition-standard);
+  z-index: 100;
 }
 
-/* ========== Testimonials ========== */
-.testimonials .card {
-  background-color: #2a2a2a;
-  color: #f8f9fa;
-  transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: var(--primary-amber) !important;
+  border-color: var(--primary-amber) !important;
+  color: var(--deep-charcoal) !important;
+  opacity: 1;
 }
 
-.testimonials .card:hover {
-  transform: translateY(-5px);
+.carousel-indicators {
+  bottom: 30px !important;
+  z-index: 100;
 }
 
-.testimonials .card-body p {
-  font-size: 0.95rem;
-  line-height: 1.6;
+.carousel-indicators [data-bs-target] {
+  width: 32px !important;
+  height: 4px !important;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  border: none !important;
+  margin: 0 4px !important;
+  transition: var(--transition-standard) !important;
 }
 
-.testimonials .card img {
-  object-fit: cover;
+.carousel-indicators .active {
+  background-color: var(--primary-amber) !important;
+  width: 48px !important;
 }
 
-.testimonials .card .bi-star-fill {
-  font-size: 1rem;
+/* 2. Welcome & Intro Section */
+.welcome-section {
+  position: relative;
+  background-color: var(--bg-main);
 }
 
-.testimonials .card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #e0e0e0;
+.welcome-section h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--deep-charcoal);
+  margin-bottom: var(--space-2);
 }
 
-.testimonials .card small.text-muted {
-  color: #ccc !important;
-}
-
-/* ========== Video ========== */
+/* 3. Interactive Video Player */
 .video-container {
   position: relative;
-  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--border-color);
+  background-color: #000000;
+  aspect-ratio: 16/9;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-card);
 }
 
 .video-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: inherit;
-}
-
-.video-container:hover .video-overlay {
   opacity: 1;
-}
-
-.video-controls {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 2rem;
-  backdrop-filter: blur(4px);
-}
-
-.video-control-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2rem;
+  transition: var(--transition-standard);
   cursor: pointer;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-control-btn:hover {
-  transform: scale(1.1);
-  color: var(--primary-color);
+  z-index: 5;
 }
 
 .video-container.is-playing .video-overlay {
@@ -152,51 +161,188 @@
 
 .video-container.is-playing:hover .video-overlay {
   opacity: 1;
+  background: rgba(15, 23, 42, 0.25);
+}
+
+.video-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.72) !important;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s var(--ease-spring);
+}
+
+.video-overlay:hover .video-controls {
+  transform: scale(1.05);
+}
+
+.video-control-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-standard);
+  border-radius: 50%;
+}
+
+.video-control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--primary-amber);
+}
+
+.video-control-btn.play-pause-btn {
+  background-color: var(--primary-amber);
+  color: var(--deep-charcoal);
+}
+
+.video-control-btn.play-pause-btn:hover {
+  background-color: var(--primary-amber-hover);
+  color: #ffffff;
+}
+
+/* 4. Services highlights Section */
+.services-highlight-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-4) var(--space-3);
+  background-color: #ffffff;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-standard);
+}
+
+.services-highlight-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+}
+
+.services-highlight-icon-box {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary-amber-light);
+  color: var(--primary-amber);
+  margin-bottom: var(--space-3);
+  transition: var(--transition-standard);
+}
+
+.services-highlight-card:hover .services-highlight-icon-box {
+  background-color: var(--primary-amber);
+  color: #ffffff;
+  transform: scale(1.08) rotate(5deg);
+}
+
+.services-highlight-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.services-highlight-card p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--slate-gray);
+  margin-bottom: var(--space-3);
+}
+
+/* 5. Client Testimonials (Dark Gradient & Glassmorphism) */
+.testimonials-section {
+  background: radial-gradient(circle at bottom right, rgba(217, 119, 6, 0.08), transparent 45%),
+              linear-gradient(180deg, #0f172a 0%, #030712 100%);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--space-5) 0;
+}
+
+.testimonial-glass-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: var(--radius-card);
+  padding: var(--space-4) var(--space-3) !important;
+  transition: var(--transition-standard);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-glass-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(217, 119, 6, 0.25) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.testimonial-quote {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: var(--space-3);
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  margin-right: 12px;
+}
+
+.testimonial-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.testimonial-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .carousel-item {
+    height: 80vh;
+  }
+  .carousel-caption {
+    top: 50%;
+    padding: var(--space-3) !important;
+  }
 }
 
 @media (max-width: 768px) {
   .carousel-item {
-    height: 100vh;
+    height: 75vh;
   }
-
-  .carousel-caption {
-    top: 45%;
-    padding: 1rem;
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important; /* Hide arrows on mobile */
   }
-
-  .carousel-caption h2 {
-    margin-bottom: 0.75rem;
-  }
-
-  .carousel-caption p {
-    margin-bottom: 1rem;
-  }
-
-  .carousel-caption .btn {
-    padding: 0.5rem 1rem;
-  }
-
-  .video-controls {
-    padding: 0.75rem;
-    gap: 0.75rem;
-  }
-
-  .video-control-btn {
-    font-size: 1.5rem;
-    padding: 0.25rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .carousel-item {
-    height: 100vh;
-  }
-
-  .carousel-caption {
-    top: 40%;
-  }
-
-  .carousel-indicators {
-    bottom: 20px;
+  .testimonials-section {
+    padding: var(--space-4) 0;
   }
 }

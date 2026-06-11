@@ -3,8 +3,10 @@ import AOS from 'aos'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import PageHeader from '../components/shared/PageHeader'
+import InteractiveCard from '../components/shared/InteractiveCard'
+import CTASection from '../components/shared/CTASection'
 import projects from '../data/projects'
-import { Link } from 'react-router-dom'
+import { ZoomIn, MapPin, Calendar, Maximize } from 'lucide-react'
 
 const categories = [
   { label: 'All Projects', value: 'all' },
@@ -32,27 +34,41 @@ export default function PortfolioPage() {
     setLightboxOpen(true)
   }
 
-  return (
-    <div className="container flex-grow-1 mt-5 pt-5" data-aos="fade-up">
-      <article className="portfolio-section">
-        <PageHeader title="Our Construction Portfolio" subtitle="Explore our completed projects that showcase our commitment to quality, innovation, and client satisfaction." />
+  // Helper function to resolve category styling badge classes
+  const getBadgeClass = (category) => {
+    switch (category) {
+      case 'residential': return 'badge-status-residential'
+      case 'commercial': return 'badge-status-commercial'
+      case 'landscape': return 'badge-status-landscape'
+      case 'renovation': return 'badge-status-renovation'
+      default: return 'badge-status-commercial'
+    }
+  }
 
-        {/* Filter Buttons */}
-        <div className="row mb-4">
-          <div className="col-12">
-            <div className="project-filter text-center">
-              <div className="btn-group btn-group-sm flex-wrap" role="group">
-                {categories.map(cat => (
-                  <button
-                    key={cat.value}
-                    type="button"
-                    className={`btn btn-outline-secondary ${activeFilter === cat.value ? 'active' : ''}`}
-                    onClick={() => setActiveFilter(cat.value)}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
+  return (
+    <div className="container flex-grow-1" style={{ paddingTop: 'calc(var(--navbar-height) - 20px)', paddingBottom: '40px' }}>
+      <article className="portfolio-section">
+        
+        <PageHeader 
+          eyebrow="Showcase"
+          title="Our Construction Portfolio" 
+          subtitle="Explore our completed projects that showcase our commitment to quality, innovation, and client satisfaction." 
+        />
+
+        {/* Floating Pill Filter Buttons */}
+        <div className="row mb-5">
+          <div className="col-12 d-flex justify-content-center">
+            <div className="portfolio-filter-container">
+              {categories.map(cat => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  className={`portfolio-filter-btn ${activeFilter === cat.value ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(cat.value)}
+                >
+                  {cat.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -60,51 +76,71 @@ export default function PortfolioPage() {
         {/* Projects Grid */}
         <div className="row g-4 portfolio-grid">
           {filteredProjects.map((project, index) => (
-            <div className="col-lg-4 col-md-6 portfolio-item" key={project.id} data-aos="fade-up">
-              <div className="card border-0 shadow-sm h-100 overflow-hidden">
+            <div className="col-lg-4 col-md-6 portfolio-item" key={project.id} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
+              <InteractiveCard className="h-100 d-flex flex-column" style={{ background: '#ffffff' }}>
+                
+                {/* Image Container with Hover zoom overlay */}
                 <div className="portfolio-img-container" onClick={() => openLightbox(index)}>
-                  <img src={project.image} className="card-img-top" alt={project.name} loading="lazy" />
+                  <img src={project.image} alt={project.name} loading="lazy" />
                   <div className="portfolio-overlay">
-                    <i className="bi bi-zoom-in text-white fs-1"></i>
+                    <div className="portfolio-overlay-icon-box">
+                      <ZoomIn size={24} />
+                    </div>
                   </div>
                 </div>
-                <div className="card-body">
-                  <div className="d-flex justify-content-between align-items-start mb-2">
-                    <h3 className="h5 card-title mb-0">{project.name}</h3>
-                    <span className={`badge ${project.badgeClass}`}>{project.category.charAt(0).toUpperCase() + project.category.slice(1)}</span>
+
+                {/* Card Body */}
+                <div className="card-body p-4 d-flex flex-column flex-grow-1">
+                  <div className="d-flex justify-content-between align-items-center mb-3">
+                    <h3 className="h5 card-title mb-0 fw-bold">{project.name}</h3>
+                    <span className={`badge-status ${getBadgeClass(project.category)}`}>
+                      {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
+                    </span>
                   </div>
-                  <p className="card-text">{project.description}</p>
-                  <ul className="list-unstyled">
-                    <li className="d-flex mb-1">
-                      <i className="bi bi-geo-alt-fill text-warning me-2"></i>
+                  
+                  <p className="small mb-4" style={{ color: 'var(--slate-gray)', flexGrow: 1, lineHeight: '1.6' }}>
+                    {project.description}
+                  </p>
+                  
+                  {/* Specifications details list */}
+                  <ul className="portfolio-specs-list">
+                    <li>
+                      <MapPin size={15} />
                       <span>{project.location}</span>
                     </li>
-                    <li className="d-flex mb-1">
-                      <i className="bi bi-calendar-check-fill text-warning me-2"></i>
+                    <li>
+                      <Calendar size={15} />
                       <span>Completed: {project.completionDate}</span>
                     </li>
-                    <li className="d-flex">
-                      <i className="bi bi-rulers text-warning me-2"></i>
-                      <span>{project.size}</span>
+                    <li>
+                      <Maximize size={15} />
+                      <span>Size: {project.size}</span>
                     </li>
                   </ul>
+
                 </div>
-              </div>
+
+              </InteractiveCard>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <section className="text-center my-5 py-5" data-aos="fade-up">
-          <h3 className="h2 mb-4">Ready to Start Your Project?</h3>
-          <p className="lead mb-4">Let's discuss how we can bring your vision to life.</p>
-          <Link to="/contact" className="btn btn-warning btn-lg px-4 py-2">
-            <i className="bi bi-chat-square-text-fill me-2"></i>Get in Touch
-          </Link>
-        </section>
+        {/* Call To Action */}
+        <div className="mt-5 pt-3">
+          <CTASection 
+            title="Ready to Start Your Project?"
+            subtitle="Let's discuss how we can bring your vision from blueprint to beautiful citizen-built reality."
+          />
+        </div>
+
       </article>
 
-      <Lightbox open={lightboxOpen} close={() => setLightboxOpen(false)} index={lightboxIndex} slides={lightboxSlides} />
+      <Lightbox 
+        open={lightboxOpen} 
+        close={() => setLightboxOpen(false)} 
+        index={lightboxIndex} 
+        slides={lightboxSlides} 
+      />
     </div>
   )
 }

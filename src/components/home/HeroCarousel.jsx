@@ -24,7 +24,7 @@ const slides = [
     image: '/images/construction-team.jpg',
     alt: 'Professional Construction Team',
     title: 'Trusted Construction Experts',
-    subtitle: '20+ years of building excellence in Botswana',
+    subtitle: 'Building excellence across Botswana with precision and quality design',
     link: '/contact',
     buttonText: 'Get a Free Consultation',
     loading: 'lazy'
@@ -33,15 +33,15 @@ const slides = [
 
 export default function HeroCarousel() {
   return (
-    <section className="hero-carousel mt-5 pt-1" data-aos="fade-up">
-      <Carousel id="mainCarousel" ride="carousel" indicators controls>
+    <section className="hero-carousel" data-aos="fade-in">
+      <Carousel id="mainCarousel" ride="carousel" indicators={true} controls={true} interval={6000}>
         {slides.map((slide, index) => (
           <Carousel.Item key={index}>
             <img src={slide.image} className="d-block w-100" alt={slide.alt} loading={slide.loading} />
-            <Carousel.Caption className="d-block">
-              <h2 className="display-4 fw-bold mb-3">{slide.title}</h2>
-              <p className="lead">{slide.subtitle}</p>
-              <Link to={slide.link} className="btn btn-warning btn-lg mt-3">{slide.buttonText}</Link>
+            <Carousel.Caption className="carousel-caption">
+              <h2>{slide.title}</h2>
+              <p>{slide.subtitle}</p>
+              <Link to={slide.link} className="btn-premium btn-premium-secondary mt-2">{slide.buttonText}</Link>
             </Carousel.Caption>
           </Carousel.Item>
         ))}

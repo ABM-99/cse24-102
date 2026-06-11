@@ -1,101 +1,271 @@
-/* ========== CSS Variables ========== */
+/* ========== Design System & Core Tokens (Swiss Modernism 2.0 + Bocra UI) ========== */
+
 :root {
-  --primary-color: #ffc107;
-  --secondary-color: #343a40;
-  --text-dark: #212529;
-  --text-light: #f8f9fa;
-  --transition-speed: 0.3s;
-  --navbar-height: 70px;
+  /* Brand Palette */
+  --primary-amber: #D97706;      /* Brand accent - safety construction amber */
+  --primary-amber-hover: #B45309;
+  --primary-amber-light: #FEF3C7;
+  --deep-charcoal: #0f172a;      /* Primary text, headings */
+  --slate-gray: #64748b;         /* Descriptions, secondary text */
+  --border-color: #e2e8f0;       /* Neutral light borders */
+  --bg-main: #f8fafc;            /* Clean light background */
+  --bg-card: #ffffff;            /* White card background */
+  
+  /* Font Stacks */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-nav: 'DM Sans', sans-serif;
+  --font-footer-tagline: 'Syne', sans-serif;
+
+  /* Typography Details */
+  --letter-spacing-heading: -0.03em;
+  --letter-spacing-eyebrow: 0.12em;
+  --letter-spacing-nav: 0.01em;
+
+  /* Spacing (8px Base Grid) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-8: 96px;
+
+  /* Shell Layout */
+  --navbar-height: 80px;
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --radius-input: 8px;
+  
+  /* Glassmorphism Specs (Bocra UI Preference) */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(226, 232, 240, 0.6);
+  --glass-blur: 16px;
+  --glass-saturate: 180%;
+  
+  /* Transitions */
+  --transition-standard: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ========== Base Reset & Styles ========== */
+/* ========== Global Reset & Base ========== */
 *,
 *::before,
 *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
-  color: var(--text-dark);
-  background: linear-gradient(rgba(244, 238, 238, 0.9), rgba(244, 238, 238, 0.9));
+  font-family: var(--font-body);
+  color: var(--deep-charcoal);
+  background-color: var(--bg-main);
+  line-height: 1.625;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* ========== Layout ========== */
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--deep-charcoal);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--slate-gray);
+  margin-bottom: var(--space-2);
+}
+
+/* Links & Clickables */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-standard);
+  cursor: pointer;
+}
+
+/* ========== Design System Utility Classes ========== */
+
+/* Swiss Grid Section Layouts */
 .section-padding {
-  padding: 4rem 1.5rem;
-  position: relative;
+  padding: var(--space-6) 0;
 }
 
-.lead.text-muted {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+.swiss-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-3);
 }
 
-/* ========== Responsive ========== */
-@media (max-width: 992px) {
+/* Glassmorphism Panels */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-3);
+  box-shadow: 0 4px 20px 0 rgba(15, 23, 42, 0.03);
+  transition: var(--transition-standard);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 119, 6, 0.4); /* Amber border glow on hover */
+  box-shadow: 0 12px 30px 0 rgba(15, 23, 42, 0.08);
+}
+
+/* Eyebrow / Kicker text (Swiss/Bocra style) */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-eyebrow);
+  color: var(--primary-amber);
+  display: inline-block;
+  margin-bottom: var(--space-1);
+}
+
+/* Pill Badges / Elements */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Buttons System */
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-nav);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px var(--space-3);
+  border-radius: var(--radius-pill);
+  transition: var(--transition-standard);
+  border: 1px solid transparent;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.btn-premium-primary {
+  background-color: var(--deep-charcoal);
+  color: #ffffff;
+}
+
+.btn-premium-primary:hover {
+  background-color: var(--primary-amber);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+}
+
+.btn-premium-secondary {
+  background-color: var(--primary-amber);
+  color: var(--deep-charcoal);
+}
+
+.btn-premium-secondary:hover {
+  background-color: var(--primary-amber-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.btn-premium-ghost {
+  background-color: transparent;
+  border-color: var(--deep-charcoal);
+  color: var(--deep-charcoal);
+}
+
+.btn-premium-ghost:hover {
+  background-color: var(--deep-charcoal);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-premium-white {
+  background-color: #ffffff;
+  color: var(--deep-charcoal);
+  border-color: var(--border-color);
+}
+
+.btn-premium-white:hover {
+  background-color: var(--bg-main);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+/* Screen readers shortcut */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--deep-charcoal);
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 99999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ========== Responsive Breakpoints ========== */
+@media (max-width: 1024px) {
+  :root {
+    --navbar-height: 70px;
+  }
+}
+
+@media (max-width: 768px) {
   .section-padding {
-    padding: 3rem 1rem;
+    padding: var(--space-4) 0;
   }
-}
-
-@media (max-width: 576px) {
-  .section-padding {
-    padding: 2rem 1rem;
-  }
-
-  h2.display-5 {
-    font-size: 1.8rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-  }
-
-  .card {
-    margin-bottom: 1rem;
-  }
-
-  .btn {
-    width: 100%;
-    margin-bottom: 0.5rem;
-  }
-
-  .d-flex.flex-wrap.gap-3 {
-    flex-direction: column;
-  }
-}
-
-@media (hover: none) {
-  .card:hover,
-  .our-story .card:hover,
-  .service-card:hover {
-    transform: none;
-  }
-
-  .nav-link:hover {
-    background-color: transparent;
-  }
-
-  .btn:active {
-    transform: scale(0.98);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
+  .swiss-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
   }
 }

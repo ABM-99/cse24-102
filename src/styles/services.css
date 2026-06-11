@@ -1,89 +1,159 @@
+/* ========== Services Page Styles (Glassmorphism & Swiss Modernism 2.0) ========== */
+
 .services-section {
-  padding: 3rem 0;
+  padding: var(--space-4) 0;
 }
 
-.service-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 0.5rem;
+/* 1. Glassmorphic Services Grid Card */
+.service-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4) var(--space-3);
+  transition: var(--transition-standard);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.service-glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
 }
 
-.service-card::before {
+.service-icon-container {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: var(--primary-amber-light);
+  color: var(--primary-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  transition: var(--transition-standard);
+}
+
+.service-glass-card:hover .service-icon-container {
+  background-color: var(--primary-amber);
+  color: #ffffff;
+  transform: scale(1.08) rotate(3deg);
+}
+
+.service-features-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 var(--space-3);
+  align-self: flex-start;
+  width: 100%;
+}
+
+.service-features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--slate-gray);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.service-features-list li svg {
+  color: var(--primary-amber);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* 2. Process Timeline (Swiss Layout) */
+.process-timeline-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* Connecting line behind steps */
+.process-timeline-container::before {
   content: '';
   position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 193, 7, 0.1) 0%,
-    rgba(255, 193, 7, 0) 100%
-  );
-  transition: top 0.5s ease;
+  top: 28px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background-color: var(--border-color);
+  z-index: 1;
 }
 
-.service-card:hover::before {
-  top: 0;
+.process-timeline-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.icon-wrapper {
-  width: 70px;
-  height: 70px;
+.process-step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid var(--border-color);
+  color: var(--deep-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: var(--space-2);
+  transition: var(--transition-standard);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
-.card:hover .icon-wrapper {
-  background-color: var(--primary-color) !important;
+.process-timeline-step:hover .process-step-number {
+  background-color: var(--primary-amber);
+  border-color: var(--primary-amber);
+  color: var(--deep-charcoal);
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.25);
 }
 
-.card:hover .icon-wrapper i {
-  color: white !important;
+.process-timeline-step h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--deep-charcoal);
 }
 
-.service-card:hover .icon-wrapper {
-  background-color: var(--primary-color) !important;
+.process-timeline-step p {
+  font-size: 0.875rem;
+  color: var(--slate-gray);
+  line-height: 1.5;
+  padding: 0 8px;
 }
 
-.service-card:hover .icon-wrapper i {
-  color: white !important;
-}
-
-/* Process Steps */
-.process-step {
-  transition: transform 0.3s ease;
-}
-
-.process-step:hover {
-  transform: translateY(-10px);
-}
-
-.step-number {
-  transition: all 0.3s ease;
-}
-
-.process-step:hover .step-number {
-  background-color: var(--primary-color) !important;
-  color: white !important;
-  transform: scale(1.1);
-}
-
-@media (max-width: 767.98px) {
-  .services-section {
-    padding: 2rem 0;
+/* Responsive stack behavior */
+@media (max-width: 992px) {
+  .process-timeline-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
-
-  .process-step {
-    margin-bottom: 1.5rem;
+  
+  .process-timeline-container::before {
+    display: none; /* Hide connector bar on vertical stack */
   }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
+  
+  .process-timeline-step p {
+    padding: 0;
+    max-width: 450px;
   }
 }

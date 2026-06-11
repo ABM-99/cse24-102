@@ -7,21 +7,31 @@ const steps = [
 
 export default function WorkProcess() {
   return (
-    <section className="my-5 py-5" data-aos="fade-up">
+    <section className="section-padding my-5" data-aos="fade-up">
       <div className="text-center mb-5">
-        <h2 className="display-5 fw-bold mb-3">Our Work Process</h2>
-        <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>A streamlined approach to ensure quality and efficiency at every stage</p>
+        <span className="eyebrow">Methodology</span>
+        <h2 className="display-5 fw-extrabold mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+          Our Work Process
+        </h2>
+        <p className="lead mx-auto" style={{ maxWidth: '640px', color: 'var(--slate-gray)', fontSize: '1.05rem' }}>
+          A streamlined approach to ensure quality and efficiency at every stage
+        </p>
       </div>
-      <div className="row g-4">
-        {steps.map((step) => (
-          <div className="col-md-6 col-lg-3" key={step.number}>
-            <div className="process-step text-center p-4">
-              <div className="step-number bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '60px', height: '60px' }}>
-                <span className="fs-4 fw-bold">{step.number}</span>
-              </div>
-              <h4 className="h5 mb-3">{step.title}</h4>
-              <p>{step.desc}</p>
+      
+      {/* Swiss grid process timeline */}
+      <div className="process-timeline-container">
+        {steps.map((step, idx) => (
+          <div 
+            className="process-timeline-step" 
+            key={step.number}
+            data-aos="fade-up"
+            data-aos-delay={idx * 150}
+          >
+            <div className="process-step-number">
+              {step.number}
             </div>
+            <h4>{step.title}</h4>
+            <p>{step.desc}</p>
           </div>
         ))}
       </div>

@@ -1,49 +1,142 @@
+/* ========== Portfolio Page Styles (Glassmorphism & Swiss Modernism 2.0) ========== */
+
 .portfolio-section {
-  padding: 3rem 0;
+  padding: var(--space-4) 0;
 }
 
+/* 1. Filter Pills Container */
+.portfolio-filter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: var(--space-4);
+  padding: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Override filter button styles */
+.portfolio-filter-btn {
+  font-family: var(--font-nav);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--slate-gray);
+  transition: var(--transition-standard);
+  cursor: pointer;
+}
+
+.portfolio-filter-btn:hover {
+  background-color: rgba(15, 23, 42, 0.04);
+  color: var(--deep-charcoal);
+}
+
+.portfolio-filter-btn.active {
+  background-color: var(--deep-charcoal) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+/* 2. Image Container Zoom Effects */
 .portfolio-img-container {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 4/3;
+  cursor: pointer;
 }
 
 .portfolio-img-container img {
-  transition: transform 0.5s ease;
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.4s var(--ease-spring);
 }
 
 .portfolio-img-container:hover img {
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
+/* Glassmorphic Overlay on Hover */
 .portfolio-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  cursor: pointer;
 }
 
 .portfolio-img-container:hover .portfolio-overlay {
   opacity: 1;
 }
 
-.project-filter .btn {
-  margin: 0.25rem;
+.portfolio-overlay-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--primary-amber);
+  color: var(--deep-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+  transform: scale(0.8);
+  transition: transform 0.3s var(--ease-spring);
 }
 
-.project-filter .btn.active {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: var(--text-dark);
+.portfolio-img-container:hover .portfolio-overlay-icon-box {
+  transform: scale(1);
 }
 
-.portfolio-item {
-  transition: opacity 0.3s ease;
+/* 3. Card specs layout */
+.portfolio-specs-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+}
+
+.portfolio-specs-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--slate-gray);
+  margin-bottom: 8px;
+}
+
+.portfolio-specs-list li svg {
+  color: var(--primary-amber);
+  flex-shrink: 0;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 640px) {
+  .portfolio-filter-container {
+    border-radius: 20px;
+    padding: 6px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .portfolio-filter-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
 }

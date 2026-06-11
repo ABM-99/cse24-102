@@ -1,3 +1,4 @@
+import { ArrowUp } from 'lucide-react'
 import useScrollPosition from '../../hooks/useScrollPosition'
 
 export default function ScrollToTop() {
@@ -14,7 +15,7 @@ export default function ScrollToTop() {
       aria-label="Scroll to top"
       style={{ display: isVisible ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}
     >
-      <i className="bi bi-arrow-up"></i>
+      <ArrowUp size={20} />
     </button>
   )
 }
