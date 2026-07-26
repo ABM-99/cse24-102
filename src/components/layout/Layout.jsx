@@ -16,6 +16,7 @@ export default function Layout() {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Loader />
       <ScrollProgress />
       <Navbar />

@@ -18,8 +18,7 @@ export default function CTASection({
   secondaryTo = '/projects'
 }) {
   return (
-    <section className="cta-section" aria-labelledby="cta-heading">
-      <div className="cta-bg-glow" aria-hidden="true" />
+    <section className="cta-section section-padding section-navy" aria-labelledby="cta-heading">
       <div className="container">
         <div className="cta-section-content" style={{ position: 'relative', zIndex: 1 }}>
           <h2 id="cta-heading">{title}</h2>

@@ -14,6 +14,8 @@ const NAV_LINKS = [
   { to: '/',            label: 'Home',         exact: true },
   { to: '/about',       label: 'About' },
   { to: '/technology',  label: 'Technology',   division: 'tech' },
+  { to: '/construction',label: 'Construction', division: 'construction' },
+  { to: '/projects',    label: 'Projects' },
 ]
 
 export default function Navbar() {

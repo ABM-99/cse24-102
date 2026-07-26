@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Cpu, HardHat, Brain, Code2, Zap, Network, Radio, Server, Cloud, Activity } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
+import { Cpu, HardHat, Brain, Code2, Zap, Network, Radio, Server, Cloud, Activity, ArrowRight } from 'lucide-react'
 import Button from '../components/shared/Button'
 import SectionHeader from '../components/shared/SectionHeader'
 import DivisionCard from '../components/shared/DivisionCard'
@@ -35,18 +35,21 @@ const PROCESS = [
   { step: '05', label: 'Support',   desc: 'Ongoing partnership after handover.' },
 ]
 
+// Featured Projects Placeholder
+const FEATURED_PROJECTS = [
+  { id: 1, title: 'Project Alpha (Smart Grid)', division: 'tech', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600', status: 'In Development' },
+  { id: 2, title: 'Metro Hub Expansion', division: 'construction', image: 'https://images.unsplash.com/photo-1541888086225-c6b75c138804?auto=format&fit=crop&q=80&w=600', status: 'In Development' },
+]
+
 
 
 export default function HomePage() {
-  useEffect(() => {
-    document.title = 'First Minds — Building Intelligent Solutions'
-    // Update meta description dynamically (also set in index.html as default)
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'First Minds (PTY) LTD — one company delivering Technology and Construction solutions in Botswana. AI, Software, Civil Works, and Infrastructure.')
-  }, [])
-
   return (
     <>
+      <Helmet>
+        <title>First Minds — Building Intelligent Solutions</title>
+        <meta name="description" content="First Minds (PTY) LTD — one company delivering Technology and Construction solutions in Botswana. AI, Software, Civil Works, and Infrastructure." />
+      </Helmet>
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
@@ -113,7 +116,7 @@ export default function HomePage() {
       </section>
 
       {/* ── DIVISIONS ─────────────────────────────────────────────────── */}
-      <section className="divisions section-padding" aria-labelledby="divisions-heading">
+      <section className="divisions section-padding section-navy" aria-labelledby="divisions-heading">
         <div className="container">
           <SectionHeader
             id="divisions-heading"
@@ -158,7 +161,7 @@ export default function HomePage() {
           <div className="grid-3" style={{ marginTop: 'var(--space-8)' }} role="list">
             {CAPABILITIES.map(({ label, icon: Icon, desc }) => (
               <div key={label} className="card-base" role="listitem">
-                <div style={{ width: '48px', height: '48px', borderRadius: '8px', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--space-4)', color: 'var(--color-navy)' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '8px', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--space-4)' }}>
                   <Icon size={24} aria-hidden="true" />
                 </div>
                 <h3 style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-2)' }}>{label}</h3>
@@ -168,7 +171,40 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      {/* ── FEATURED PROJECTS ─────────────────────────────────────────── */}
+      <section className="featured-projects section-padding section-navy" aria-labelledby="featured-projects-heading">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 'var(--space-8)' }}>
+            <span className="eyebrow eyebrow--tech" style={{ marginBottom: 'var(--space-2)' }}>In Progress</span>
+            <h2 id="featured-projects-heading" style={{ fontSize: 'var(--text-4xl)' }}>Featured Projects</h2>
+          </div>
+          
+          <div className="grid-2">
+            {FEATURED_PROJECTS.map(project => (
+              <article key={project.id} className="project-card" data-division={project.division}>
+                <div className="project-image">
+                  <img src={project.image} alt={project.title} loading="lazy" />
+                  <div className="project-status">
+                    <span className="status-dot"></span>
+                    {project.status}
+                  </div>
+                </div>
+                <div className="project-info">
+                  <div className={`project-division badge badge--${project.division === 'tech' ? 'tech' : 'construction'}`}>
+                    {project.division === 'tech' ? 'Technology' : 'Construction'}
+                  </div>
+                  <h3>{project.title}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: 'var(--space-6)' }}>
+            <Button to="/projects" variant="secondary">
+              View All Projects <ArrowRight size={16} />
+            </Button>
+          </div>
+        </div>
+      </section>
       {/* ── PROCESS ───────────────────────────────────────────────────── */}
       <section className="process section-padding" aria-labelledby="process-heading">
         <div className="container">

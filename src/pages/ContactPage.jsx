@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react'
+import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { Phone, Mail, MapPin, CheckCircle, Send } from 'lucide-react'
 import Button from '../components/shared/Button'
 
 // PLACEHOLDER contact details — verify and update before launch
@@ -39,12 +40,6 @@ export default function ContactPage() {
     firstName: '', lastName: '', email: '', phone: '', subject: '', message: ''
   })
 
-  useEffect(() => {
-    document.title = 'Contact Us | First Minds'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'Get in touch with First Minds (PTY) LTD — Technology and Construction solutions in Botswana. Let\'s build something extraordinary together.')
-  }, [])
-
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -66,11 +61,15 @@ export default function ContactPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us | First Minds</title>
+        <meta name="description" content="Get in touch with First Minds. We are ready to partner with you on technology and construction projects across Botswana." />
+      </Helmet>
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="contact-hero" aria-labelledby="contact-heading">
+      <section className="contact-hero section-navy" aria-labelledby="contact-heading">
         <div className="container">
-          <span className="page-header-eyebrow">Get in Touch</span>
-          <h1 id="contact-heading">Let's Start a Conversation.</h1>
+          <span className="page-header-eyebrow">Contact Us</span>
+          <h1 id="contact-heading">Let's Talk.</h1>
           <p className="contact-hero-sub">
             Whether you have a project in mind or just want to explore what's possible —
             we'd love to hear from you.
@@ -107,7 +106,7 @@ export default function ContactPage() {
                 {/* PLACEHOLDER — update business hours when confirmed */}
                 <div className="contact-info-card">
                   <div className="contact-info-label" style={{ marginBottom: 'var(--space-2)' }}>Business Hours</div>
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-navy)', margin: 0 }}>
+                  <p style={{ fontSize: 'var(--text-sm)', margin: 0 }}>
                     Monday – Friday: 8:00 AM – 5:00 PM<br />
                     Saturday: By appointment<br />
                     Sunday: Closed

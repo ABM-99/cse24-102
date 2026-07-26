@@ -26,18 +26,12 @@ export default function SectionHeader({
         </span>
       )}
       {title && (
-        <h2
-          className="section-title"
-          style={dark ? { color: 'var(--color-white)' } : undefined}
-        >
+        <h2 className="section-title">
           {title}
         </h2>
       )}
       {subtitle && (
-        <p
-          className="section-subtitle"
-          style={dark ? { color: 'rgba(255,255,255,0.6)' } : undefined}
-        >
+        <p className="section-subtitle">
           {subtitle}
         </p>
       )}

@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import TechnologyPage from './pages/TechnologyPage'
 import ConstructionPage from './pages/ConstructionPage'
+import ProjectsPage from './pages/ProjectsPage'
 import ContactPage from './pages/ContactPage'
 
 // PortalGateway.jsx has been retired — the split-portal architecture is replaced
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about"        element={<AboutPage />} />
           <Route path="/technology"   element={<TechnologyPage />} />
           <Route path="/construction" element={<ConstructionPage />} />
+          <Route path="/projects"     element={<ProjectsPage />} />
           <Route path="/contact"      element={<ContactPage />} />
         </Route>
       </Routes>

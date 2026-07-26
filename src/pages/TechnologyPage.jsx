@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Brain, Code2, Zap, Radio, MessageSquare, BarChart3, CheckCircle } from 'lucide-react'
 import SectionHeader from '../components/shared/SectionHeader'
 import Button from '../components/shared/Button'
@@ -58,16 +58,13 @@ const WHY_TECH = [
 ]
 
 export default function TechnologyPage() {
-  useEffect(() => {
-    document.title = 'Technology Division | First Minds'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'First Minds Technologies — AI, Software Development, Automation, IoT, and IT Consulting services in Botswana.')
-  }, [])
-
   return (
     <>
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="division-hero division-hero--tech" aria-labelledby="tech-heading">
+      <Helmet>
+        <title>Technology Division | First Minds</title>
+        <meta name="description" content="First Minds Technologies — AI, Software Development, Automation, IoT, and IT Consulting services in Botswana." />
+      </Helmet>
+      <section className="division-hero division-hero--tech section-navy" aria-labelledby="tech-heading">
         <div className="division-hero-accent" aria-hidden="true" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="division-hero-badge">
@@ -124,13 +121,12 @@ export default function TechnologyPage() {
       </section>
 
       {/* ── WHY CHOOSE US ─────────────────────────────────────────────── */}
-      <section className="division-why division-why--tech section-padding" aria-labelledby="why-tech-heading">
+      <section className="division-why division-why--tech section-padding section-navy" aria-labelledby="why-tech-heading">
         <div className="container">
           <SectionHeader
             eyebrow="Why First Minds"
             title="Built Different. Delivered Better."
             subtitle="We're not a typical software house. We're an integrated solutions company."
-            eyebrowColor="tech"
           />
 
           <div className="why-grid" role="list">

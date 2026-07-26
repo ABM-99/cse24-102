@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { Shield, Target, Users, Globe, Award, Lightbulb } from 'lucide-react'
 import SectionHeader from '../components/shared/SectionHeader'
 import CTASection from '../components/shared/CTASection'
@@ -38,16 +38,14 @@ const VALUES = [
 ]
 
 export default function AboutPage() {
-  useEffect(() => {
-    document.title = 'About Us | First Minds'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'Learn about First Minds (PTY) LTD — one company with Technology and Construction divisions, built on a mission to create intelligent, lasting solutions.')
-  }, [])
-
   return (
     <>
+      <Helmet>
+        <title>About Us | First Minds</title>
+        <meta name="description" content="Learn about First Minds (PTY) LTD — one company with Technology and Construction divisions, built on a mission to create intelligent, lasting solutions." />
+      </Helmet>
       {/* ── PAGE HERO ─────────────────────────────────────────────────── */}
-      <section className="about-hero" aria-labelledby="about-heading">
+      <section className="about-hero section-navy" aria-labelledby="about-heading">
         <div className="container">
           <span className="page-header-eyebrow">Our Company</span>
           <h1 id="about-heading">Built on Purpose.<br />Driven by Solutions.</h1>
@@ -82,7 +80,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR STORY ─────────────────────────────────────────────────── */}
-      <section className="about-story section-padding" aria-labelledby="story-heading">
+      <section className="about-story section-padding section-navy" aria-labelledby="story-heading">
         <div className="container">
           <div className="about-story-grid">
             <div>
@@ -91,16 +89,15 @@ export default function AboutPage() {
                 title="One Company. One Vision."
                 subtitle="First Minds was founded with a clear belief: that the companies best positioned to solve today's complex challenges are those that can move fluently between the physical and the digital world."
                 align="left"
-                eyebrowColor="tech"
               />
               {/* PLACEHOLDER — update this narrative with real company history when available */}
-              <p style={{ color: 'var(--color-grey-dark)', lineHeight: 1.75, marginTop: 'var(--space-4)' }}>
+              <p style={{ lineHeight: 1.75, marginTop: 'var(--space-4)' }}>
                 We built our construction division first — developing expertise in architectural design,
                 civil works, and project delivery across Botswana. As our clients' needs evolved, so did we.
                 Our technology division grew from a recognition that intelligent software and connected
                 systems are now as foundational to a project's success as concrete and steel.
               </p>
-              <p style={{ color: 'var(--color-grey-dark)', lineHeight: 1.75, marginTop: 'var(--space-3)' }}>
+              <p style={{ lineHeight: 1.75, marginTop: 'var(--space-3)' }}>
                 Today, First Minds operates at the intersection of both — delivering fully integrated
                 solutions for clients who need more than a contractor or a software vendor. They need a partner.
               </p>
@@ -157,13 +154,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── OUR VALUES ────────────────────────────────────────────────── */}
-      <section className="about-values section-padding" aria-labelledby="values-heading">
+      <section className="about-values section-padding section-navy" aria-labelledby="values-heading">
         <div className="container">
           <SectionHeader
             eyebrow="Our Values"
             title="What We Stand For"
             subtitle="These principles guide every decision, every project, and every relationship."
-            eyebrowColor="construction"
           />
 
           <div className="values-grid" role="list">

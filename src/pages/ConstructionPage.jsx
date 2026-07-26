@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { HardHat, Building2, Hammer, Leaf, Zap, CheckCircle } from 'lucide-react'
 import SectionHeader from '../components/shared/SectionHeader'
 import Button from '../components/shared/Button'
@@ -52,16 +52,14 @@ const WHY_CONSTRUCTION = [
 ]
 
 export default function ConstructionPage() {
-  useEffect(() => {
-    document.title = 'Construction Division | First Minds'
-    const meta = document.querySelector('meta[name="description"]')
-    if (meta) meta.setAttribute('content', 'First Minds Construction — Architectural Design, Residential & Commercial Construction, Civil Works, and Infrastructure services in Botswana.')
-  }, [])
-
   return (
     <>
+      <Helmet>
+        <title>Construction Division | First Minds</title>
+        <meta name="description" content="First Minds Construction — Architectural Design, Residential & Commercial Construction, Civil Works, and Infrastructure services in Botswana." />
+      </Helmet>
       {/* ── HERO ──────────────────────────────────────────────────────── */}
-      <section className="division-hero division-hero--construction" aria-labelledby="construction-heading">
+      <section className="division-hero division-hero--construction section-navy" aria-labelledby="construction-heading">
         <div className="division-hero-accent" aria-hidden="true" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="division-hero-badge">
@@ -119,7 +117,7 @@ export default function ConstructionPage() {
       </section>
 
       {/* ── WHY CHOOSE US ─────────────────────────────────────────────── */}
-      <section className="division-why division-why--construction section-padding" aria-labelledby="why-construction-heading">
+      <section className="division-why division-why--construction section-padding section-navy" aria-labelledby="why-construction-heading">
         <div className="container">
           <SectionHeader
             eyebrow="Why First Minds"
