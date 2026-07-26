@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.npm-cache/
+.ps-vite.err.log
+.ps-vite.out.log
+.vite-dev.log
+.vite-dev.err.log
