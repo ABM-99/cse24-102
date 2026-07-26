@@ -9,8 +9,9 @@ import ScrollProgress from './ScrollProgress'
 export default function Layout() {
   const { pathname } = useLocation()
 
+  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname])
 
   return (
@@ -18,7 +19,7 @@ export default function Layout() {
       <Loader />
       <ScrollProgress />
       <Navbar />
-      <main id="main-content" className="flex-grow-1">
+      <main id="main-content" tabIndex={-1} style={{ outline: 'none' }}>
         <Outlet />
       </main>
       <Footer />

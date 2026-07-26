@@ -1,75 +1,135 @@
-import { useState } from 'react'
-import { Navbar as BsNavbar, Nav, Container } from 'react-bootstrap'
-import { NavLink, Link } from 'react-router-dom'
-import { Menu, X, Cpu } from 'lucide-react'
-import useScrollPosition from '../../hooks/useScrollPosition'
+import { useState, useEffect } from 'react'
+import { NavLink, Link, useLocation } from 'react-router-dom'
+import Button from '../shared/Button'
+
+// Logo paths
+const LOGOS = {
+  master: '/logo/fm-master.svg',
+  tech: '/logo/fm-tech.svg',
+  construction: '/logo/fm-construction.svg',
+  icon: '/logo/fm-icon.svg'
+}
+
+const NAV_LINKS = [
+  { to: '/',            label: 'Home',         exact: true },
+  { to: '/about',       label: 'About' },
+  { to: '/technology',  label: 'Technology',   division: 'tech' },
+]
 
 export default function Navbar() {
-  const scrollPosition = useScrollPosition()
-  const [expanded, setExpanded] = useState(false)
-  const isScrolled = scrollPosition > 50
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
 
-  const handleTechSwitch = () => {
-    sessionStorage.setItem('portal_choice', 'technology')
-    setExpanded(false)
+  // Determine which logo to show based on current route
+  const getLogoSrc = () => {
+    if (location.pathname.startsWith('/technology'))  return LOGOS.tech
+    if (location.pathname.startsWith('/construction')) return LOGOS.construction
+    return LOGOS.master
   }
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  const navShellClass = 'navbar-shell navbar-shell--solid'
+
   return (
-    <div className={`floating-nav-wrapper ${isScrolled ? 'scrolled' : ''}`}>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
-      <BsNavbar
-        expanded={expanded}
-        onToggle={setExpanded}
-        expand="lg"
-        className="navbar-pill"
-      >
-        <Container fluid className="p-0 d-flex justify-content-between align-items-center">
-          <BsNavbar.Brand as={Link} to="/construction" className="navbar-brand m-0 d-flex align-items-center">
-            <img 
-              src="/tech/logo.png" 
-              alt="First Minds Logo" 
-              className="navbar-logo me-2" 
-              style={{ height: '42px', width: 'auto', objectFit: 'contain' }}
+    <>
+      {/* Skip to content — accessibility */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
+
+      <header className={navShellClass} role="banner">
+        <div className="navbar-inner">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="navbar-logo-link"
+            aria-label="First Minds — Home"
+          >
+            {/* TODO: Replace with final SVG from brand team */}
+            <img
+              src={getLogoSrc()}
+              alt="First Minds"
+              className="navbar-logo-img"
+              width="auto"
+              height="36"
             />
-            <span>First</span>Minds
-          </BsNavbar.Brand>
-          
-          <BsNavbar.Toggle aria-controls="navbarNav" className="navbar-toggler">
-            {expanded ? <X size={20} /> : <Menu size={20} />}
-          </BsNavbar.Toggle>
-          
-          <BsNavbar.Collapse id="navbarNav">
-            <Nav className="ms-auto navbar-nav align-items-center">
-              <Nav.Link as={NavLink} to="/construction" end onClick={() => setExpanded(false)}>
-                Home
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/construction/about" onClick={() => setExpanded(false)}>
-                About
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/construction/services" onClick={() => setExpanded(false)}>
-                Services
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/construction/portfolio" onClick={() => setExpanded(false)}>
-                Portfolio
-              </Nav.Link>
-              <Nav.Link 
-                as={Link} 
-                to="/technology" 
-                className="nav-link-tech-switch d-flex align-items-center gap-1 mx-2"
-                onClick={handleTechSwitch}
-                style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 500 }}
-              >
-                <Cpu size={14} /> Technologies
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/construction/contact" className="nav-cta-btn" onClick={() => setExpanded(false)}>
-                Contact
-              </Nav.Link>
-            </Nav>
-          </BsNavbar.Collapse>
-        </Container>
-      </BsNavbar>
-    </div>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav aria-label="Main navigation">
+            <ul className="navbar-links" role="list">
+              {NAV_LINKS.map(({ to, label, exact, division }) => (
+                <li key={to}>
+                  <NavLink
+                    to={to}
+                    end={exact}
+                    className={({ isActive }) =>
+                      ['navbar-link', isActive ? 'active' : ''].filter(Boolean).join(' ')
+                    }
+                    data-division={division}
+                  >
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="navbar-cta">
+            <Button to="/contact" variant="primary" size="sm">
+              Contact Us
+            </Button>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className={`navbar-toggle ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      <nav
+        id="mobile-menu"
+        className={`navbar-mobile ${menuOpen ? 'open' : ''}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+      >
+        {NAV_LINKS.map(({ to, label, exact }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={exact}
+            className={({ isActive }) =>
+              ['navbar-mobile-link', isActive ? 'active' : ''].filter(Boolean).join(' ')
+            }
+            onClick={() => setMenuOpen(false)}
+          >
+            {label}
+          </NavLink>
+        ))}
+        <div className="navbar-mobile-divider" />
+        <Button
+          to="/contact"
+          variant="primary"
+          className="navbar-mobile-cta"
+          onClick={() => setMenuOpen(false)}
+        >
+          Contact Us
+        </Button>
+      </nav>
+    </>
   )
 }

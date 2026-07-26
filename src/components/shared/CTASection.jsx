@@ -1,53 +1,43 @@
-import { Link } from 'react-router-dom'
-import { MessageSquare, Phone } from 'lucide-react'
+import Button from './Button'
 
-export default function CTASection({ 
-  title = 'Ready to Start Your Project?', 
-  subtitle = 'Contact us today for a free consultation and quote', 
-  showPhone = true 
+/**
+ * CTASection — dark navy call-to-action block
+ * title: string
+ * subtitle: string
+ * primaryLabel: string
+ * primaryTo: route string
+ * secondaryLabel: string (optional)
+ * secondaryTo: route string (optional)
+ */
+export default function CTASection({
+  title = "Let's Build Something Extraordinary Together.",
+  subtitle = 'Whether it\'s technology, infrastructure, or both — First Minds has the expertise to deliver.',
+  primaryLabel = 'Contact Us',
+  primaryTo = '/contact',
+  secondaryLabel = 'View Our Projects',
+  secondaryTo = '/projects'
 }) {
   return (
-    <section 
-      className="section-padding position-relative overflow-hidden" 
-      style={{
-        background: 'radial-gradient(circle at center, rgba(217, 119, 6, 0.12) 0%, transparent 70%), linear-gradient(135deg, #0f172a 0%, #020617 100%)',
-        color: '#ffffff',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
-      }}
-      data-aos="fade-up"
-    >
-      {/* Accent border strip */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '4px',
-          background: 'linear-gradient(90deg, transparent, var(--primary-amber) 50%, transparent)'
-        }}
-      />
-
-      <div className="container text-center position-relative" style={{ zIndex: 1 }}>
-        <span className="eyebrow" style={{ color: 'var(--primary-amber)' }}>Get Started</span>
-        <h2 className="display-5 fw-extrabold mb-3 text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-          {title}
-        </h2>
-        <p className="lead mb-4 mx-auto" style={{ maxWidth: '600px', color: 'rgba(255, 255, 255, 0.7)' }}>
-          {subtitle}
-        </p>
-        <div className="d-flex flex-wrap justify-content-center gap-3">
-          <Link to="/construction/contact" className="btn-premium btn-premium-secondary">
-            <MessageSquare size={16} />
-            <span>Get in Touch</span>
-          </Link>
-          {showPhone && (
-            <a href="tel:+26772717212" className="btn-premium btn-premium-white">
-              <Phone size={16} />
-              <span>Call +267 72 717 212</span>
-            </a>
-          )}
+    <section className="cta-section" aria-labelledby="cta-heading">
+      <div className="cta-bg-glow" aria-hidden="true" />
+      <div className="container">
+        <div className="cta-section-content" style={{ position: 'relative', zIndex: 1 }}>
+          <h2 id="cta-heading">{title}</h2>
+          <p>{subtitle}</p>
+          <div className="cta-buttons">
+            <Button to={primaryTo} variant="white">
+              {primaryLabel}
+            </Button>
+            {secondaryLabel && secondaryTo && (
+              <Button
+                to={secondaryTo}
+                variant="ghost"
+                style={{ color: 'rgba(255,255,255,0.7)', borderColor: 'rgba(255,255,255,0.3)' }}
+              >
+                {secondaryLabel}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,20 @@
+<!-- TODO: Replace with final SVG from brand team — Technologies lockup placeholder -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 48" role="img" aria-label="First Minds Technologies">
+  <!-- Icon mark (blue emphasis) -->
+  <rect x="0" y="2" width="42" height="44" rx="6" fill="#0A66C2"/>
+  <!-- Left building (tech) — white on blue -->
+  <rect x="4" y="14" width="12" height="24" rx="1" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+  <rect x="6" y="17" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <rect x="11" y="17" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <rect x="6" y="23" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <rect x="11" y="23" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <rect x="6" y="29" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <rect x="11" y="29" width="3" height="3" rx="0.5" fill="#FFFFFF"/>
+  <!-- Right building (muted on blue) -->
+  <rect x="24" y="10" width="13" height="28" rx="1" fill="rgba(255,255,255,0.25)"/>
+  <!-- Ground -->
+  <line x1="2" y1="40" x2="40" y2="40" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Wordmark -->
+  <text x="52" y="20" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="16" fill="#0A66C2" letter-spacing="-0.2">FIRST MINDS</text>
+  <text x="52" y="36" font-family="'Inter', sans-serif" font-weight="500" font-size="10" fill="#5E6572" letter-spacing="0.8">TECHNOLOGIES</text>
+</svg>

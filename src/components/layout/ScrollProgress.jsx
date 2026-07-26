@@ -1,13 +1,28 @@
-import useScrollPosition from '../../hooks/useScrollPosition'
+import { useState, useEffect } from 'react'
 
 export default function ScrollProgress() {
-  const scrollPosition = useScrollPosition()
-  const docHeight = typeof document !== 'undefined' ? document.documentElement.scrollHeight - window.innerHeight : 1
-  const scrollPercent = docHeight > 0 ? (scrollPosition / docHeight) * 100 : 0
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement
+      const scrolled = el.scrollTop || document.body.scrollTop
+      const max = el.scrollHeight - el.clientHeight
+      setWidth(max > 0 ? (scrolled / max) * 100 : 0)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <div className="scroll-progress">
-      <div className="scroll-progress-bar" style={{ width: `${Math.min(scrollPercent, 100)}%` }} />
-    </div>
+    <div
+      className="scroll-progress-bar"
+      style={{ width: `${width}%` }}
+      role="progressbar"
+      aria-valuenow={Math.round(width)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Page scroll progress"
+    />
   )
 }

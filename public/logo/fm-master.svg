@@ -1,0 +1,27 @@
+<!-- TODO: Replace with final SVG from brand team — Master lockup placeholder -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 56" role="img" aria-label="First Minds — Building Intelligent Solutions">
+  <!-- Icon mark -->
+  <rect x="0" y="4" width="48" height="48" rx="7" fill="#0F1B2E"/>
+  <!-- Left building (tech) -->
+  <rect x="5" y="18" width="14" height="28" rx="1" fill="none" stroke="#0A66C2" stroke-width="1.5"/>
+  <rect x="7" y="21" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <rect x="12" y="21" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <rect x="7" y="27" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <rect x="12" y="27" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <rect x="7" y="33" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <rect x="12" y="33" width="3" height="3" rx="0.5" fill="#0A66C2"/>
+  <!-- Right building (construction) -->
+  <rect x="27" y="12" width="16" height="34" rx="1" fill="#F5A623"/>
+  <rect x="29" y="14" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <rect x="35" y="14" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <rect x="29" y="22" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <rect x="35" y="22" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <rect x="29" y="30" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <rect x="35" y="30" width="4" height="5" rx="0.5" fill="#0F1B2E" opacity="0.35"/>
+  <!-- Ground -->
+  <line x1="3" y1="46" x2="45" y2="46" stroke="#5E6572" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Wordmark: FIRST MINDS -->
+  <text x="58" y="24" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="18" fill="#0F1B2E" letter-spacing="-0.3">FIRST MINDS</text>
+  <!-- Tagline -->
+  <text x="59" y="40" font-family="'Inter', sans-serif" font-weight="400" font-size="9.5" fill="#5E6572" letter-spacing="1.2">BUILDING INTELLIGENT SOLUTIONS</text>
+</svg>

@@ -1,31 +1,28 @@
-export default function PageHeader({ title, subtitle, eyebrow }) {
+/**
+ * PageHeader — standard inner page hero header
+ * Used on pages with a dark navy header band above the content.
+ */
+export default function PageHeader({ eyebrow, title, subtitle, division }) {
   return (
-    <section className="text-center mb-5 py-4 animate-fade-in" data-aos="fade-up">
-      {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      <h1 
-        className="display-4 fw-extrabold mb-3" 
-        style={{ 
-          letterSpacing: 'var(--letter-spacing-heading)',
-          fontFamily: 'var(--font-heading)',
-          fontWeight: 800
-        }}
-      >
-        {title}
-      </h1>
-      {subtitle && (
-        <p className="lead mx-auto" style={{ maxWidth: '640px', color: 'var(--slate-gray)', fontSize: '1.05rem' }}>
-          {subtitle}
-        </p>
-      )}
-      <div 
-        style={{ 
-          width: '60px', 
-          height: '4px', 
-          backgroundColor: 'var(--primary-amber)', 
-          margin: '1.5rem auto 0',
-          borderRadius: 'var(--radius-pill)' 
-        }} 
-      />
-    </section>
+    <header className="page-header">
+      <div className="container">
+        {eyebrow && (
+          <span
+            className="page-header-eyebrow"
+            style={
+              division === 'technology'
+                ? { color: 'var(--color-tech)' }
+                : division === 'construction'
+                ? { color: 'var(--color-construction)' }
+                : undefined
+            }
+          >
+            {eyebrow}
+          </span>
+        )}
+        <h1>{title}</h1>
+        {subtitle && <p className="page-header-subtitle">{subtitle}</p>}
+      </div>
+    </header>
   )
 }

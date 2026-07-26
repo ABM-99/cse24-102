@@ -1,16 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'aos/dist/aos.css'
+
+// Core design tokens + global reset — MUST be first
 import './styles/index.css'
+
+// Bootstrap layout utilities (grid, flexbox) — kept for stability
+// Bootstrap's color tokens are overridden by our CSS variables
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+// Page-specific styles
 import './styles/navbar.css'
 import './styles/footer.css'
 import './styles/home.css'
 import './styles/about.css'
-import './styles/services.css'
+import './styles/tech.css'
 import './styles/portfolio.css'
 import './styles/contact.css'
+
+// Shared component styles
 import './styles/components.css'
 import './styles/animations.css'
 

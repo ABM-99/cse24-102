@@ -1,21 +1,25 @@
+import { useState, useEffect } from 'react'
 import { ArrowUp } from 'lucide-react'
-import useScrollPosition from '../../hooks/useScrollPosition'
 
 export default function ScrollToTop() {
-  const scrollPosition = useScrollPosition()
-  const isVisible = scrollPosition > 300
+  const [visible, setVisible] = useState(false)
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const scrollUp = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
     <button
-      id="scrollTopBtn"
-      className={isVisible ? 'show' : ''}
-      onClick={scrollToTop}
-      aria-label="Scroll to top"
-      style={{ display: isVisible ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}
+      className={`scroll-to-top ${visible ? 'visible' : ''}`}
+      onClick={scrollUp}
+      aria-label="Scroll back to top"
+      tabIndex={visible ? 0 : -1}
     >
-      <ArrowUp size={20} />
+      <ArrowUp size={18} aria-hidden="true" />
     </button>
   )
 }
